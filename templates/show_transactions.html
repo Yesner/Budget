@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transacciones</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .list-group-item:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4 text-center">Transacciones</h1>
+        <h2 class="my-4 text-center">Reflejado en Unidades Monetarias</h2>
+        <br/>
+        <div class="row font-weight-bold">
+            <div class="col">Descripción</div>
+            <div class="col">Categoría</div>
+            <div class="col">Monto</div>
+        </div>
+        {% for category_name, total in totals_by_category %}
+            <ul class="list-group">
+                {% for transaction in transactions %}
+                    {% if transaction.category.name == category_name %}
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col">{{ transaction.description }}</div>
+                                <div class="col">{{ transaction.category.name }}</div>
+                                <div class="col">{{ "{:,.2f}".format(transaction.amount) }}</div>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %} <!-- Cierre del bucle 'for' interno -->
+            </ul>
+            <h2 class="my-4 text-center">{{ category_name }} - Total: {{ "{:,.2f}".format(total) }}</h2>
+        {% endfor %} <!-- Cierre del bucle 'for' externo -->
+
+        <h2 class="my-4 text-center">Total General: {{ "{:,.2f}".format(total_general) }}</h2>
+    </div>
+</body>
+</html>
