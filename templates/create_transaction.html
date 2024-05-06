@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de transacciones</title>
+    <!-- Agrega el siguiente enlace para incluir Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4 text-center">Crear transacción</h1>
+        <form action="/transactions" method="post">
+            <div class="form-group">
+                <label for="description">Descripción:</label>
+                <input type="text" id="description" name="description" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="amount">Cantidad:</label>
+                <input type="text" id="amount" name="amount" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="category_id">Categoría:</label>
+                <select id="category_id" name="category_id" class="form-control">
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</body>
+</html>
