@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Categories</title>
+    <!-- Agrega el siguiente enlace para incluir Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- Agrega el siguiente bloque de estilo para resaltar las categorías en azul al pasar el cursor sobre ellas -->
+    <style>
+        .list-group-item:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4 text-center">Categorias</h1>
+        <ul class="list-group">
+            {% for category in categories %}
+                <li class="list-group-item">{{ category.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
