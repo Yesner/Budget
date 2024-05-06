@@ -9,6 +9,10 @@ __pycache__/
 #db
 *.db
 
+#notes
+
+*.txt
+
 # Distribution / packaging
 .Python
 build/
